@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>限時選擇題</title>
+    <title>超越小學堂</title>
 </head>
 <body>
-    <h1>請在60秒內回答以下問題：</h1>
-    <p id="question">1+1等於多少？</p>
+    <h1>請在96秒內回答問題：</h1>
+    <p id="question">超越國小1年級有2/3的學生曾經確診；2年級有4/6的學生曾經確診；3年級有6/9的學生曾經確診。哪個年級的學生曾經確診數最多？</p>
     <form id="quizForm">
-        <input type="radio" name="answer" value="1"> 1<br>
-        <input type="radio" name="answer" value="2"> 2<br>
+        <input type="radio" name="answer" value="1年級"> 1<br>
+        <input type="radio" name="answer" value="3年級"> 2<br>
         <input type="radio" name="answer" value="3"> 3<br>
-        <input type="radio" name="answer" value="4"> 4<br>
+        <input type="radio" name="answer" value="一樣多"> 4<br>
         <button type="submit">提交</button>
     </form>
-    <p id="timer">60秒</p>
+    <p id="timer">96秒</p>
     <p id="result"></p>
 
     <script>
-        let timeLeft = 60;
+        let timeLeft = 96;
         const timerElement = document.getElementById('timer');
         const resultElement = document.getElementById('result');
         const formElement = document.getElementById('quizForm');
@@ -38,7 +38,7 @@
             event.preventDefault();
             clearInterval(timer);
             const answer = document.querySelector('input[name="answer"]:checked').value;
-            if (answer === '2') {
+            if (answer === '3') {
                 resultElement.textContent = '恭喜你，答對了！';
             } else {
                 resultElement.textContent = '答錯了，闖關失敗';
