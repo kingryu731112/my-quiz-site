@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>限時選擇題</title>
+</head>
+<body>
+    <h1>請在60秒內回答以下問題：</h1>
+    <p id="question">1+1等於多少？</p>
+    <form id="quizForm">
+        <input type="radio" name="answer" value="1"> 1<br>
+        <input type="radio" name="answer" value="2"> 2<br>
+        <input type="radio" name="answer" value="3"> 3<br>
+        <input type="radio" name="answer" value="4"> 4<br>
+        <button type="submit">提交</button>
+    </form>
+    <p id="timer">60秒</p>
+    <p id="result"></p>
+
+    <script>
+        let timeLeft = 60;
+        const timerElement = document.getElementById('timer');
+        const resultElement = document.getElementById('result');
+        const formElement = document.getElementById('quizForm');
+
+        const timer = setInterval(() => {
+            timeLeft--;
+            timerElement.textContent = timeLeft + '秒';
+            if (timeLeft <= 0) {
+                clearInterval(timer);
+                resultElement.textContent = '闖關失敗';
+                formElement.style.display = 'none';
+            }
+        }, 1000);
+
+        formElement.addEventListener('submit', (event) => {
+            event.preventDefault();
+            clearInterval(timer);
+            const answer = document.querySelector('input[name="answer"]:checked').value;
+            if (answer === '2') {
+                resultElement.textContent = '恭喜你，答對了！';
+            } else {
+                resultElement.textContent = '答錯了，闖關失敗';
+            }
+            formElement.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
